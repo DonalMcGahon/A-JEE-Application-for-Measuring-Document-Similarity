@@ -9,15 +9,16 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-//import core.calculation.CompareDocumentFacade;
-//import ie.gmit.sw.ComparisionResult;
+import ie.gmit.sw.CompareDocumentFacade;
+import ie.gmit.sw.ComparisionResult;
 import ie.gmit.sw.Configuration;
 
 
 /* NB: You will need to add the JAR file $TOMCAT_HOME/lib/servlet-api.jar to your CLASSPATH 
  *     variable in order to compile a servlet from a command line.
  */
-@WebServlet("/UploadServlet")
+@SuppressWarnings("serial")
+@WebServlet("/doProcess")
 @MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB. The file size in bytes after which the file will be temporarily stored on disk. The default size is 0 bytes.
                  maxFileSize=1024*1024*10,      // 10MB. The maximum size allowed for uploaded files, in bytes
                  maxRequestSize=1024*1024*50)   // 50MB. he maximum size allowed for a multipart/form-data request, in bytes.
@@ -136,12 +137,12 @@ public class ServiceHandler extends HttpServlet {
 		 * can be easily completed by writing the file to disk if necessary. The following lines just
 		 * read the document from memory... this might not be a good idea if the file size is large!
 		 */
-
-		/*private Deque<String> buffer = new LinkedList<>();
-
-		public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			doGet(req, resp);
-	 	}*/
 		
 	}
+	
+	private Deque<String> buffer = new LinkedList<>();
+
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+ 	}
 }

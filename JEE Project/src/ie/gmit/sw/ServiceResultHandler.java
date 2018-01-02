@@ -8,13 +8,13 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
-//import ie.gmit.sw.CompareDocumentFacade;
-//import ie.gmit.sw.ComparisionResult;
+import ie.gmit.sw.CompareDocumentFacade;
+import ie.gmit.sw.ComparisionResult;
 
 @SuppressWarnings("serial")
 @WebServlet("/doGetResult")
 
-public class ServiceResultHandler {
+public class ServiceResultHandler extends HttpServlet {
 	public void init() throws ServletException {
 		ServletContext ctx = getServletContext();
 	}

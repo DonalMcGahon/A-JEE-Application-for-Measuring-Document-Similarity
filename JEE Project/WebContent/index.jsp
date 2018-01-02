@@ -18,7 +18,8 @@
 					<input type="file" name="txtDocument"/>
 					<center><input type="submit" value="Compare Document"></center>
 				</fieldset>							
-			</form>	
+			</form>
+
 
 		</td>
 	</tr>

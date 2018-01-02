@@ -1,0 +1,12 @@
+package ie.gmit.sw;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import ie.gmit.sw.ComparisionResult;
+import ie.gmit.sw.DoumentDetails;
+
+public class CompareDocument {
+
+}
