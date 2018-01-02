@@ -1,0 +1,6 @@
+127.0.0.1 - - [02/Jan/2018:15:41:12 +0000] "GET / HTTP/1.1" 404 1073
+0:0:0:0:0:0:0:1 - - [02/Jan/2018:15:41:14 +0000] "GET /JEE_Project/index.jsp HTTP/1.1" 200 953
+0:0:0:0:0:0:0:1 - - [02/Jan/2018:15:41:14 +0000] "GET /JEE_Project/includes/basic.css HTTP/1.1" 200 70824
+0:0:0:0:0:0:0:1 - - [02/Jan/2018:15:41:22 +0000] "GET /JEE_Project/index.jsp HTTP/1.1" 200 953
+0:0:0:0:0:0:0:1 - - [02/Jan/2018:15:41:22 +0000] "GET /JEE_Project/includes/basic.css HTTP/1.1" 200 70824
+0:0:0:0:0:0:0:1 - - [02/Jan/2018:15:41:30 +0000] "POST /JEE_Project/doProcess HTTP/1.1" 404 1098
