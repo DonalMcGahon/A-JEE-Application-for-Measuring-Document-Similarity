@@ -21,7 +21,7 @@ public class CompareDocumentFacade {
 	 */
 	public ArrayList<ComparisionResult> comapareAndSaveDoucument(String documentTitle,String content){
 		DocumentDetails doumentDetails = new  DocumentDetails(documentTitle, new Date(), Shingles.parsed_constituentShingles(content));
-		objDBFacade.SaveDocument(doumentDetails);
+		objDBFacade.SaveDoucment(doumentDetails);
 		ArrayList<ComparisionResult> arrayListComparisionResult = compareDocument.compareDocumentWithDocumentsSet(doumentDetails, objDBFacade.getDocumentList());
 		for (ComparisionResult comparisionResult : arrayListComparisionResult) {
 			objDBFacade.SaveComparisonResult(comparisionResult);

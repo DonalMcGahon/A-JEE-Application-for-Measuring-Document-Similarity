@@ -16,7 +16,7 @@ public class DBFacade {
 	 */
 	public void SaveDocument(DocumentDetails doumentDetails){
 		db = DBConnection.getInstance();  		
-		objDBUpdate.SaveDoucmentInDB(db, doumentDetails);
+		objDBUpdate.SaveDocumentInDB(db, doumentDetails);
 	}
 	
 	/**

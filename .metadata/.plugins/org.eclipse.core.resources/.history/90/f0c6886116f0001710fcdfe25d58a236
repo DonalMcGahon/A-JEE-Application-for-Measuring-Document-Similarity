@@ -14,9 +14,9 @@ public class DBFacade {
 	 * Save DoumentDetails object in database
 	 * @param doumentDetails
 	 */
-	public void SaveDocument(DocumentDetails doumentDetails){
+	public void SaveDoucment(DocumentDetails doumentDetails){
 		db = DBConnection.getInstance();  		
-		objDBUpdate.SaveDoucmentInDB(db, doumentDetails);
+		objDBUpdate.SaveDocumentInDB(db, doumentDetails);
 	}
 	
 	/**

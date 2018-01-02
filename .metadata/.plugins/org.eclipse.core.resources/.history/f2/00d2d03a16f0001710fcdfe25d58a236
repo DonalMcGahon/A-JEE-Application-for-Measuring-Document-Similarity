@@ -14,7 +14,7 @@ public class DBFacade {
 	 * Save DoumentDetails object in database
 	 * @param doumentDetails
 	 */
-	public void SaveDocument(DocumentDetails doumentDetails){
+	public void SaveDoucment(DoumentDetails doumentDetails){
 		db = DBConnection.getInstance();  		
 		objDBUpdate.SaveDoucmentInDB(db, doumentDetails);
 	}
@@ -32,7 +32,7 @@ public class DBFacade {
 	 * get DoumentDetails object from database
 	 * @return ObjectSet<DoumentDetails>
 	 */
-	public List<DocumentDetails> getDocumentList(){
+	public List<DoumentDetails> getDocumentList(){
 		db = DBConnection.getInstance();  	
 		return objDBUpdate.getDoucmentFromDB(db);
 	}
