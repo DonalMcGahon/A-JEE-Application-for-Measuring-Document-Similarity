@@ -1,0 +1,13 @@
+package ie.gmit.sw;
+
+import java.util.List;
+
+import com.db4o.ObjectContainer; 
+ 
+
+import ie.gmit.sw.DocumentDetails;
+import ie.gmit.sw.ComparisionResult;
+
+public class DBUpdate {
+
+}
