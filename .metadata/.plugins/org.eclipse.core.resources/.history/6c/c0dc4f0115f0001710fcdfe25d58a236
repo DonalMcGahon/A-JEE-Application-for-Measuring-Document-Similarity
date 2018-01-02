@@ -1,0 +1,50 @@
+package ie.gmit.sw;
+
+import java.util.List;
+import com.db4o.ObjectContainer;
+import ie.gmit.sw.ComparisionResult;
+import ie.gmit.sw.DocumentDetails;
+
+public class DBFacade {
+	private ObjectContainer db = null;  
+	DBUpdate objDBUpdate = new DBUpdate(); 
+	 
+	
+	/**
+	 * Save DoumentDetails object in database
+	 * @param doumentDetails
+	 */
+	public void SaveDoucment(DoumentDetails doumentDetails){
+		db = DBConnection.getInstance();  		
+		objDBUpdate.SaveDoucmentInDB(db, doumentDetails);
+	}
+	
+	/**
+	 * Save DoumentDetails object in database
+	 * @param doumentDetails
+	 */
+	public void SaveComparisonResult(ComparisionResult comparisionResult){
+		db = DBConnection.getInstance();  		
+		objDBUpdate.SaveDoucmentComparisonResultInDB(db, comparisionResult);
+	}
+	
+	/**
+	 * get DoumentDetails object from database
+	 * @return ObjectSet<DoumentDetails>
+	 */
+	public List<DoumentDetails> getDocumentList(){
+		db = DBConnection.getInstance();  	
+		return objDBUpdate.getDoucmentFromDB(db);
+	}
+	
+	
+	/**get DoumentDetails object from database
+	 * 
+	 * @return ObjectSet<ComparisionResult>
+	 */
+	public List<ComparisionResult> getComparisionResultList(){
+		db = DBConnection.getInstance();  	
+		return objDBUpdate.getComparisonResultFromDB(db);		
+	}
+
+}
