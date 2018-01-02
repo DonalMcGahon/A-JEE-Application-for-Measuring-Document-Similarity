@@ -1,9 +1,17 @@
 package ie.gmit.sw;
 
 import java.io.*;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+
+//import core.calculation.CompareDocumentFacade;
+//import ie.gmit.sw.ComparisionResult;
+import ie.gmit.sw.Configuration;
 
 
 /* NB: You will need to add the JAR file $TOMCAT_HOME/lib/servlet-api.jar to your CLASSPATH 
@@ -34,7 +42,15 @@ public class ServiceHandler extends HttpServlet {
 		
 		//Reads the value from the <context-param> in web.xml. Any application scope variables 
 		//defined in the web.xml can be read in as follows:
-		environmentalVariable = ctx.getInitParameter("SOME_GLOBAL_OR_ENVIRONMENTAL_VARIABLE"); 
+		System.out.println("BLOCKING_QUEUE_SIZE "+ ctx.getInitParameter("BLOCKING_QUEUE_SIZE"));
+		System.out.println("DB_PATH "+ ctx.getInitParameter("DB_PATH"));
+		System.out.println("MINHASH_NUMBER "+ ctx.getInitParameter("MINHASH_NUMBER"));
+		System.out.println("SHINGLE_SIZE "+ ctx.getInitParameter("SHINGLE_SIZE"));
+		
+		Configuration.BLOCKING_QUEUE_SIZE =  Integer.parseInt(ctx.getInitParameter("BLOCKING_QUEUE_SIZE"));
+		Configuration.DB_PATH = ctx.getInitParameter("DB_PATH");
+		Configuration.MINHASH_NUMBER = Integer.parseInt(ctx.getInitParameter("MINHASH_NUMBER"));
+		Configuration.SHINGLE_SIZE =  Integer.parseInt(ctx.getInitParameter("SHINGLE_SIZE")); 
 	}
 
 
@@ -62,7 +78,8 @@ public class ServiceHandler extends HttpServlet {
 		
 		//Step 4) Process the input and write out the response. 
 		//The following string should be extracted as a context from web.xml 
-		out.print("<html><head><title>A JEE Application for Measuring Document Similarity</title>");		
+		out.print("<html><head><title>JEE Application for Measuring Document Similarity</title>");		
+		out.print("<link rel=\"stylesheet\" href=\"includes/basic.css\">");
 		out.print("</head>");		
 		out.print("<body>");
 		
@@ -77,36 +94,30 @@ public class ServiceHandler extends HttpServlet {
 			//Check out-queue for finished job with the given taskNumber
 		}
 		
+		BufferedReader br = new BufferedReader(new InputStreamReader(part.getInputStream()));
+		String line = null;
+		String file_content = "";
+		while ((line = br.readLine()) != null) {
+			file_content+=line;
+			
+		}
+		
 		//Output some headings at the top of the generated page
-		out.print("<H1>Processing request for Job#: " + taskNumber + "</H1>");
+		out.print("<H1><img src=\"image/processing.gif\" height =\"150px\" alt=\"processing_image\" >Processing request for Job#: " + taskNumber + "</H1>");
 		out.print("<H3>Document Title: " + title + "</H3>");
-		
-		
-		//Output some useful information for you (yes YOU!)
-		out.print("<div id=\"r\"></div>");
-		out.print("<font color=\"#993333\"><b>");
-		out.print("Environmental Variable Read from web.xml: " + environmentalVariable);
-		out.print("<br>This servlet should only be responsible for handling client request and returning responses. Everything else should be handled by different objects.");
-		out.print("Note that any variables declared inside this doGet() method are thread safe. Anything defined at a class level is shared between HTTP requests.");				
-		out.print("</b></font>");
-		
-		out.print("<h3>Compiling and Packaging this Application</h3>");
-		out.print("Place any servlets or Java classes in the WEB-INF/classes directory. Alternatively package "); 
-		out.print("these resources as a JAR archive in the WEB-INF/lib directory using by executing the ");  
-		out.print("following command from the WEB-INF/classes directory jar -cf my-library.jar *");
-		
-		out.print("<ol>");
-		out.print("<li><b>Compile on Mac/Linux:</b> javac -cp .:$TOMCAT_HOME/lib/servlet-api.jar WEB-INF/classes/ie/gmit/sw/*.java");
-		out.print("<li><b>Compile on Windows:</b> javac -cp .;%TOMCAT_HOME%/lib/servlet-api.jar WEB-INF/classes/ie/gmit/sw/*.java");
-		out.print("<li><b>Build JAR Archive:</b> jar -cf jaccard.war *");
-		out.print("</ol>");
-		
-		//We can also dynamically write out a form using hidden form fields. The form itself is not
-		//visible in the browser, but the JavaScript below can see it.
-		out.print("<form name=\"frmRequestDetails\" action=\"poll\">");
+		 
+	    out.print("<form name=\"frmRequestDetails\" action=\"poll\">");
 		out.print("<input name=\"txtTitle\" type=\"hidden\" value=\"" + title + "\">");
 		out.print("<input name=\"frmTaskNumber\" type=\"hidden\" value=\"" + taskNumber + "\">");
-		out.print("</form>");								
+		out.print("<input name=\"file_content\" type=\"hidden\" value=\"" + file_content + "\">");
+		out.print("</form>");	
+		
+		out.print("<h3>Uploaded Document</h3>");	
+		out.print("<font color=\"0000ff\">");	
+		out.print(file_content);
+		
+		out.print("</font>");	
+		
 		out.print("</body>");	
 		out.print("</html>");	
 		
@@ -125,29 +136,12 @@ public class ServiceHandler extends HttpServlet {
 		 * can be easily completed by writing the file to disk if necessary. The following lines just
 		 * read the document from memory... this might not be a good idea if the file size is large!
 		 */
-		out.print("<h3>Uploaded Document</h3>");	
-		out.print("<font color=\"0000ff\">");	
-		BufferedReader br = new BufferedReader(new InputStreamReader(part.getInputStream()));
-		String line = null;
-		while ((line = br.readLine()) != null) {
-			
-			/*String[] words = line.split(" ");
-			
-			
-			for (int i = 0; i < SHINGLE_SIZE; i++ ){
-				buffer.add(words(i));
-			}
-			Shingle s = getNextShingle();
-			
-			bq.put(s);
-			
-			out.print(line);*/
-			
-			//Break each line up into shingles and do something. The servlet really should act as a
-			//contoller and dispatch this task to something else... Divide and conquer...! I've been
-			//telling you all this since 2nd year...!
-			out.print(line);
-		}
-		out.print("</font>");	
+
+		/*private Deque<String> buffer = new LinkedList<>();
+
+		public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			doGet(req, resp);
+	 	}*/
+		
 	}
 }
