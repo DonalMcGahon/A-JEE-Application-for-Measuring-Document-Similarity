@@ -1,0 +1,21 @@
+package ie.gmit.sw;
+
+import java.io.*;
+import java.text.DecimalFormat;
+import java.util.List;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+
+//import ie.gmit.sw.CompareDocumentFacade;
+//import ie.gmit.sw.ComparisionResult;
+
+@SuppressWarnings("serial")
+@WebServlet("/doGetResult")
+
+public class ServiceResultHandler {
+	
+	
+
+}
