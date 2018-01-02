@@ -1,0 +1,15 @@
+package ie.gmit.sw;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+
+import ie.gmit.sw.ComparisionResult;
+
+
+
+public class CompareDocumentFacade {
+	
+	
+}
