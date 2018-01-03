@@ -45,9 +45,9 @@ public class ServiceResultHandler extends HttpServlet {
 		out.print("</html>");
 		
 	}
-		DecimalFormat df = new DecimalFormat("0.00");
-		public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			doGet(req, resp);
+DecimalFormat df = new DecimalFormat("0.00");
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
  	}
 	
 	

@@ -21,7 +21,7 @@ public class DBUpdate {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
-			 
+			 //dbConnection.close();
 		}				
 	}
 	
@@ -32,16 +32,16 @@ public class DBUpdate {
 	 */
 	
 	public List<DocumentDetails> getDoucmentFromDB(ObjectContainer dbConnection){
-		try{
-			List<DocumentDetails> list= dbConnection.queryByExample(new DocumentDetails(null, null, null));
-			dbConnection.commit();
-			return list;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}finally{
-			
-		}				
+	try{
+		List<DocumentDetails> list= dbConnection.queryByExample(new DocumentDetails(null, null, null));
+		dbConnection.commit();
+		return list;
+	} catch (Exception e) {
+		e.printStackTrace();
+		return null;
+	}finally{
+		//dbConnection.close();
+	}				
 	}	
 	
 	/**
@@ -50,16 +50,16 @@ public class DBUpdate {
 	 * @param comparisonResult ComparisonResult object 
 	 */
 	public void SaveDoucmentComparisonResultInDB(ObjectContainer dbConnection,ComparisionResult comparisonResult){
-		try{
-			dbConnection.store(comparisonResult);
-			dbConnection.commit();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-	 
-		}finally{
-			 //dbConnection.close();
-		}
+	try{
+		dbConnection.store(comparisonResult);
+		dbConnection.commit();
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+ 
+	}finally{
+		 //dbConnection.close();
+	}
 				
 	}
 	

@@ -14,7 +14,7 @@ public class CompareDocumentFacade {
 	CompareDocument compareDocument = new CompareDocument();
 	Shingles shingles = new Shingles();
 	/**
-	 * compare uploaded document with database that store documents
+	 * compare upload document with database store documents
 	 * @param documentTitle String
 	 * @param content String
 	 * @return ArrayList<ComparisionResult>

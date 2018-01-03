@@ -50,16 +50,16 @@ public class DBUpdate {
 	 * @param comparisonResult ComparisonResult object 
 	 */
 	public void SaveDoucmentComparisonResultInDB(ObjectContainer dbConnection,ComparisionResult comparisonResult){
-		try{
-			dbConnection.store(comparisonResult);
-			dbConnection.commit();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-	 
-		}finally{
-			 //dbConnection.close();
-		}
+	try{
+		dbConnection.store(comparisonResult);
+		dbConnection.commit();
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+ 
+	}finally{
+		 //dbConnection.close();
+	}
 				
 	}
 	
