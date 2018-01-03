@@ -22,8 +22,8 @@
 	<br/>
 		<form bgcolor="white" method="POST"  class="form-panel"  enctype="multipart/form-data" action="doGetResult">
 				<fieldset>
-					 <legend><h3>Get All Report</h3></legend>
-					<center><input class="button" type="submit" value="Get All File Comparision Result"></center>
+					 <legend><h3>Get All Comparisons</h3></legend>
+					<center><input class="button" type="submit" value="Get All File Comparision Results"></center>
 				</fieldset>							
 			</form>	
 			

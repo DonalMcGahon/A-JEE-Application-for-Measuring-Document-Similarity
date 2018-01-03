@@ -26,7 +26,7 @@ public class ServiceResultHandler extends HttpServlet {
 		out.print("<link rel=\"stylesheet\" href=\"includes/basic.css\">");
 		out.print("</head>");		
 		out.print("<body>");
-		out.print("<H1>Summary of All Comparision Results</H1>");
+		out.print("<H1>All Comparision Result Summary</H1>");
 	 
 		out.print("</font> <font color=\"ff00ff\"><br/><br/>");	
 		CompareDocumentFacade objCompareDocumentFacade=new CompareDocumentFacade();
